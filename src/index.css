@@ -10,9 +10,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: rgb(var(--primary));
+  background-color: rgb(var(--background));
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,6 +25,7 @@
   --green: 111 175 142;
   --yellow: 201 169 106;
   --red: 196 106 106;
+  --accent-primary: 223 146 80;
 }
 
 body {
@@ -39,5 +39,28 @@ h1 {
 }
 
 .logo {
-  color: #dfdfe2;
+  color: rgb(var(--primary));
 }
+
+/* #region CountContainer */
+.count-mid-line {
+  position: relative;
+}
+.count-mid-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  transform: translateY(-50%);
+  background-color: rgb(var(--accent-primary));
+  opacity: 0.6;
+}
+/* #endregion CountContainer */
+
+/*#region Mission List*/
+.missionListEmptyState p {
+  max-width: 150px;
+}
+/*#endregion Mission List*/
