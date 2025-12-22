@@ -23,8 +23,8 @@ interface Core {
 }
 
 interface LaunchLinks {
-  article: string | null;
-  webcast: string | null;
+  article: string;
+  webcast: string;
 }
 
 export interface LaunchApi {
