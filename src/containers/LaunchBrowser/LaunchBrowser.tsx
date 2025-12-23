@@ -1,11 +1,11 @@
 import type { LaunchData, LaunchedListItem } from "../../types";
 import { formatUTCDate } from "../../utils/utils";
-import Accordion from "../Accordion/Accordion";
-import Button from "../Button/Button";
-import LaunchBrowserHeader from "./LaunchBrowserHeader";
+import Accordion from "../../components/Accordion/Accordion";
+import Button from "../../components/Button/Button";
+import LaunchBrowserHeader from "../../components/LaunchBrowser/LaunchBrowserHeader";
 import MissionsList, {
   MissionSearchableList,
-} from "../MissionsList/MissionsList";
+} from "../../components/MissionsList/MissionsList";
 
 interface LaunchBrowserProps extends LaunchData {
   selectedMissionId: string | null;

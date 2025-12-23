@@ -8,11 +8,11 @@ import type {
   Rocket,
 } from "../../types";
 import { fetchMetadata, formatUTCDate, safe } from "../../utils/utils";
-import LaunchDetailsButton from "./LaunchDetailsButton";
-import LaunchDetailsVideo from "./LaunchDetailsVideo";
-import LaunchMetadata from "./LaunchMetadata";
+import LaunchDetailsButton from "../../components/LaunchDetails/LaunchDetailsButton";
+import LaunchDetailsVideo from "../../components/LaunchDetails/LaunchDetailsVideo";
+import LaunchMetadata from "../../components/LaunchDetails/LaunchMetadata";
 import { useEffect, useState } from "react";
-import Accordion from "../Accordion/Accordion";
+import Accordion from "../../components/Accordion/Accordion";
 import { useIsMobile } from "../../hooks";
 
 interface LaunchDetailsProps extends LaunchData {

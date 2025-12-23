@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import type { LaunchApi } from "../../types";
 
 import LaunchBrowser from "../LaunchBrowser/LaunchBrowser";
-import LaunchDetailsLayout from "../LaunchDetails/LaunchDetails";
+import LaunchDetailsLayout from "../LaunchDetailsView/LaunchDetails";
 import { API_ERROR_MESSAGE, API_LAUNCHES_URL } from "../../constants";
 
 /**
