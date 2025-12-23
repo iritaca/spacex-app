@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../constants";
 import type { MetadataFolder } from "../types";
 
 /**
@@ -96,7 +97,7 @@ const cache = new Map<string, unknown>();
  * @param folder - metadata folder for the API req
  * @returns
  */
-const API_BASE_URL = "https://api.spacexdata.com/v4/";
+
 export const fetchMetadata = async <T>({
   id,
   folder,
