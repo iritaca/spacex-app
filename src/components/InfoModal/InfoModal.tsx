@@ -176,7 +176,7 @@ const InfoIconAndModal = () => {
   return (
     <>
       <Button
-        type="custom"
+        variant="custom"
         aria-label="App information"
         ref={buttonRef}
         icon={
@@ -238,7 +238,7 @@ const InfoIconAndModal = () => {
               aria-labelledby={MODAL_LABELED_BY}
             >
               <Button
-                type="custom"
+                variant="custom"
                 aria-label="Close popover"
                 icon={
                   <CloseIcon

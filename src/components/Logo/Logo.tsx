@@ -1,5 +1,5 @@
 /**
- * The main 'spaceX' logo
+ * 'spaceX' svg logo
  *
  */
 const Logo = () => {
@@ -9,7 +9,6 @@ const Logo = () => {
       x="0px"
       y="0px"
       viewBox="0 0 331.644 40.825"
-      enable-background="new 0 0 331.644 40.825"
       className={`logo h-auto w-[110px] md:w-[170px] `}
     >
       <g>
