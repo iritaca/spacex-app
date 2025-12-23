@@ -1,3 +1,4 @@
+import { useIsMobile } from "../../hooks";
 import Button from "../Button/Button";
 import ChevronIcon from "../icons/ChevronIcon";
 import { Skeleton } from "../Loader/Loader";
@@ -28,6 +29,7 @@ const LaunchDetailsButton = ({
   if (isLoading) return <Skeleton className="h-8" />;
 
   // @Isaac - i need to implement isMobile to return a different component
+  const isMobile = useIsMobile();
   return (
     <Button
       variant="custom"
