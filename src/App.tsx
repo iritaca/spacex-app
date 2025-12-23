@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import MainBody from "./components/Main/MainBody/MainBody";
+import MainBody from "./components/MainBody/MainBody";
 
 function App() {
   return (
