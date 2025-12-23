@@ -1,7 +1,7 @@
-import type { iconInstanceProps } from "../../types";
+import type { IconInstanceProps } from "../../types";
 import Icon from "./Icon";
 
-const InfoIcon = ({ className, size }: iconInstanceProps) => {
+const InfoIcon = ({ className = "", size }: IconInstanceProps) => {
   return (
     <Icon className={className} size={size}>
       <>

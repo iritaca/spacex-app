@@ -2,7 +2,8 @@ import type { IconProps } from "../../types";
 
 const sizeClass = {
   sm: "w-5 h-5",
-  lg: "w-8 h-8",
+  md: "w-8 h-8",
+  lg: "w-16 h-16",
 };
 /**
  * Base icon wrapper used to enforce consistent sizing and
@@ -12,7 +13,7 @@ const sizeClass = {
  * @param size - Controls icon size, by default "sm" = 20px
  * @param children - SVG icon
  */
-const Icon = ({ className, size = "sm", children }: IconProps) => {
+const Icon = ({ className = "", size = "sm", children }: IconProps) => {
   return (
     <svg
       className={`text-secondary ${sizeClass[size]} ${className}`}
