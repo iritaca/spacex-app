@@ -111,7 +111,7 @@ const LaunchDetails = ({
   }, [selectedMissionId, data]);
 
   return (
-    <section className="p-4 flex flex-col gap-6 h-full">
+    <section className="p-4 flex flex-col gap-6 h-full md:flex-1 md:pl-8 md:py-5">
       <LaunchDetailsButton
         mission={selecetedMissionDetails?.missionName}
         onClose={() => onClose?.()}
@@ -130,6 +130,7 @@ const LaunchDetails = ({
         <LaunchDetailsVideo
           video={selecetedMissionDetails?.video}
           isLoading={metadata.isLoading}
+          showEmptyState={!selectedMissionId}
         />
 
         {metadata.rocket?.description && !metadata.isLoading && (
