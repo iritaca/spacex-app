@@ -1,31 +1,26 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type {
-  Landpad,
+  LandpadMetadata,
   LaunchApi,
+  LaunchMissionContext,
   LaunchData,
   LaunchDetails,
-  Launchpad,
-  Rocket,
+  LaunchpadMetadata,
+  RocketMetadata,
 } from "../../types";
 import { fetchMetadata, formatUTCDate, safe } from "../../utils/utils";
 import LaunchDetailsButton from "../../components/LaunchDetails/LaunchDetailsButton";
 import LaunchDetailsVideo from "../../components/LaunchDetails/LaunchDetailsVideo";
-import LaunchMetadata from "../../components/LaunchDetails/LaunchMetadata";
 import { useEffect, useState } from "react";
-import Accordion from "../../components/Accordion/Accordion";
 import { useBreakpoint } from "../../hooks";
+import LaunchContext from "../../components/LaunchContext/LaunchContext";
+import MetadataList from "../../components/MetadataList/MetadataList";
 
 interface LaunchDetailsProps extends LaunchData {
   selectedMissionId: string | null;
   onClose?: () => void;
 }
 
-type LaunchDetailsState = {
-  rocket: Rocket | null;
-  launchpad: Launchpad | null;
-  landpad: Landpad | null;
-  isLoading: boolean;
-};
 /**
  * LaunchDetails
  *
@@ -53,7 +48,7 @@ const LaunchDetails = ({
   data,
   isLoading,
 }: LaunchDetailsProps) => {
-  const [metadata, setMetadata] = useState<LaunchDetailsState>({
+  const [metadata, setMetadata] = useState<LaunchMissionContext>({
     rocket: null,
     launchpad: null,
     landpad: null,
@@ -90,13 +85,23 @@ const LaunchDetails = ({
         undefined;
 
       const [rocket, launchpad, landpad] = await Promise.all([
-        safe(fetchMetadata<Rocket>({ folder: "rockets", id: rocketId })),
         safe(
-          fetchMetadata<Launchpad>({ folder: "launchpads", id: launchpadId })
+          fetchMetadata<RocketMetadata>({ folder: "rockets", id: rocketId })
+        ),
+        safe(
+          fetchMetadata<LaunchpadMetadata>({
+            folder: "launchpads",
+            id: launchpadId,
+          })
         ),
 
         landpadId
-          ? safe(fetchMetadata<Landpad>({ folder: "landpads", id: landpadId }))
+          ? safe(
+              fetchMetadata<LandpadMetadata>({
+                folder: "landpads",
+                id: landpadId,
+              })
+            )
           : Promise.resolve(null),
       ]);
 
@@ -119,11 +124,13 @@ const LaunchDetails = ({
         isLoading={metadata.isLoading || isLoading}
       />
 
-      <LaunchMetadata
-        rocket={metadata.rocket?.name}
-        launchpad={metadata.launchpad?.region}
-        landpad={metadata.landpad?.locality}
-        launchDate={selecetedMissionDetails?.launchDate}
+      <MetadataList
+        list={[
+          { label: "vehicle", value: metadata.rocket?.name },
+          { label: "launch site", value: metadata.launchpad?.region },
+          { label: "launch date", value: metadata.landpad?.locality },
+          { label: "landing site", value: selecetedMissionDetails?.launchDate },
+        ]}
         isLoading={metadata.isLoading || isLoading}
       />
 
@@ -134,27 +141,7 @@ const LaunchDetails = ({
           isLoading={metadata.isLoading || isLoading}
         />
 
-        {metadata.rocket?.description && !metadata.isLoading && (
-          <Accordion label="Rocket" defaultOpen>
-            <p className="text-base text-secondary">
-              {metadata.rocket.description}
-            </p>
-          </Accordion>
-        )}
-        {metadata.launchpad?.details && !metadata.isLoading && (
-          <Accordion label="Launchpad" defaultOpen>
-            <p className="text-base text-secondary">
-              {metadata.launchpad.details}
-            </p>
-          </Accordion>
-        )}
-        {metadata.landpad?.details && !metadata.isLoading && (
-          <Accordion label="Landpad" defaultOpen>
-            <p className="text-base text-secondary">
-              {metadata.landpad.details}
-            </p>
-          </Accordion>
-        )}
+        {metadata && LaunchContext(metadata)}
       </div>
     </section>
   );
