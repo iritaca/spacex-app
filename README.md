@@ -99,6 +99,8 @@ All AI-generated suggestions were carefully reviewed and adapted to maintain con
 - Implement timeline component to visualize launches chronologically
 - Add a theme toggle (dark/light)
 - Add unit testing using Jest
+- Implement scrollTop() for long contet
+- Add Pagination to long mission lists
 
 ## Deployment
 (Planned after final desktop + mobile completition)
