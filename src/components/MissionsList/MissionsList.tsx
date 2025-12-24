@@ -61,7 +61,7 @@ const MissionButton = ({
       className={`w-full flex justify-between items-center p-2 bg-card hover:bg-card/60 duration-150 ${
         hasBorder.borderTop ? "rounded-t-sm" : ""
       } ${hasBorder.borderBottom ? "rounded-b-sm" : ""} ${
-        selectedId === id ? "bg-card/20" : ""
+        selectedId === id ? "bg-accent/60" : ""
       }`}
     />
   );
