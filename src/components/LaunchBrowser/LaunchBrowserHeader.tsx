@@ -28,8 +28,10 @@ const LaunchBrowserHeader = ({ data }: LaunchData) => {
   const totalReflights = data.filter((m) => m.cores[0].reused).length;
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <h1 className="text-2xl font-bold">Rocket Launches</h1>
+    <div className="flex flex-col items-center gap-6 pt-6 px-4 md:flex-row md:justify-between md:pt-8 md:px-8">
+      <h1 className="text-2xl font-bold md:text-[32px] md:-translate-y-[10px] ">
+        Rocket Launches
+      </h1>
 
       <div className="flex justify-between w-full max-w-[410px] ">
         <CountContainer title="completed missions" count={completedMissions} />
