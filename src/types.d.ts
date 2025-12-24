@@ -42,6 +42,7 @@ export interface LaunchApi {
 
 export interface LaunchData {
   data: LaunchApi[];
+  isLoading: boolean;
 }
 
 export interface LaunchedListItem {
@@ -103,3 +104,5 @@ export type MetadataFolder =
   | "landpads"
   | "payloads"
   | "cores";
+
+export type AppStatus = "loading" | "success" | "error";
