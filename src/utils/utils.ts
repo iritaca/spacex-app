@@ -122,3 +122,23 @@ export const fetchMetadata = async <T>({
 
   return data;
 };
+
+/**
+ * Calculates the completion percentage based on `tries` and `total`
+ *
+ * @param attempts - Number of completed attempts
+ * @param total - Total number of attempts
+ *
+ * @returns - percentage as a number (0-100) rounded with Math.ceil()
+ * or undefined if a value is missing
+ */
+export const progressValue = ({
+  attempts,
+  total,
+}: {
+  attempts?: number;
+  total?: number;
+}) => {
+  if (!attempts || !total) return undefined;
+  return Math.ceil((attempts / total) * 100);
+};
