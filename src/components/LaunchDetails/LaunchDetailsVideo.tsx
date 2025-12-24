@@ -32,7 +32,10 @@ const LaunchDetailsVideo = ({
   if (showEmptyState)
     return (
       <EmptyState className={videoSizeClasses} size="lg">
-        <EmptyStateDescription children="Select a mission to  explore  details" />
+        <EmptyStateDescription
+          children="Select a mission to  explore  details"
+          className="max-w-[200px]"
+        />
       </EmptyState>
     );
   const embedUrl = toYoutubeEmbeddedUrl(video);
