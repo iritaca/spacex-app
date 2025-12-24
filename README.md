@@ -104,8 +104,13 @@ All AI-generated suggestions were carefully reviewed and adapted to maintain con
 (Planned after final desktop + mobile completition)
 
 ## Figma Design
-*(Wireframes)
-![wireframe](./assets/mobile-desktop-wireframe.png)
-*(Color tests)
-![Mobile](./assets/mobile-color-test.png)
+
+**Wireframes**  
+![Wireframe](./assets/mobile-desktop-wireframe.png)
+
+**Color Tests**  
+**Mobile:**  
+![Mobile](./assets/mobile-color-test.png)  
+
+**Desktop:**  
 ![Desktop](./assets/desktop-color-test.png)
