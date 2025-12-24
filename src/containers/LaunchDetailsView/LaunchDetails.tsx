@@ -13,7 +13,7 @@ import LaunchDetailsVideo from "../../components/LaunchDetails/LaunchDetailsVide
 import LaunchMetadata from "../../components/LaunchDetails/LaunchMetadata";
 import { useEffect, useState } from "react";
 import Accordion from "../../components/Accordion/Accordion";
-import { useIsMobile } from "../../hooks";
+import { useBreakpoint } from "../../hooks";
 
 interface LaunchDetailsProps extends LaunchData {
   selectedMissionId: string | null;
@@ -177,7 +177,7 @@ const LaunchDetails = ({
 const LaunchDetailsLayout = ({ ...props }: LaunchDetailsProps) => {
   const isOpen = !!props.selectedMissionId;
 
-  const isMobile = useIsMobile();
+  const isMobile = useBreakpoint("mobile");
 
   if (isMobile)
     return (

@@ -4,7 +4,7 @@ import InfoIcon from "../icons/InfoIcon";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseIcon from "../icons/CloseIcon";
 import { MODAL_LABELED_BY } from "../../constants";
-import { useIsMobile } from "../../hooks";
+import { useBreakpoint } from "../../hooks";
 
 /**
  * Header Info popover component
@@ -145,7 +145,7 @@ const InfoIconAndModal = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
 
-  const isMobile = useIsMobile();
+  const isMobile = useBreakpoint("mobile");
 
   //   Closes the popover when user press `Escape` key
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useIsMobile } from "../../hooks";
+import { useBreakpoint } from "../../hooks";
 import Button from "../Button/Button";
 import ChevronIcon from "../icons/ChevronIcon";
 import { Skeleton } from "../Loader/Loader";
@@ -42,7 +42,7 @@ const LaunchDetailsButton = ({
   mission,
   isLoading,
 }: LaunchDetailsButtonProps) => {
-  const isMobile = useIsMobile();
+  const isMobile = useBreakpoint("mobile");
 
   if (isMobile) {
     if (isLoading)
