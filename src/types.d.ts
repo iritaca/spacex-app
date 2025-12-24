@@ -67,33 +67,37 @@ export interface LaunchDetails {
   payloads?: string[];
 }
 
-export type Rocket = {
+export type RocketMetadata = {
   name: string;
   stages: number;
   first_flight: string;
   description: string;
   id: string;
+  active: any;
+  boosters: any;
+  success_rate_pct: number;
+  company: string;
 };
 
-export type Landpad = {
+export type LandpadMetadata = {
   id: string;
   name: string;
   full_name: string;
   locality: string;
   region: string;
   landing_attempts: number;
-  landing_success: number;
+  landing_successes: number;
   details: string;
 };
 
-export type Launchpad = {
+export type LaunchpadMetadata = {
   id: string;
   name: string;
   full_name: string;
   locality: string;
   region: string;
-  landing_attempts: number;
-  landing_success: number;
+  launch_attempts: number;
+  launch_successes: number;
   rockets: string;
   details?: string;
 };
@@ -106,3 +110,15 @@ export type MetadataFolder =
   | "cores";
 
 export type AppStatus = "loading" | "success" | "error";
+
+export interface LaunchMissionContext {
+  rocket: RocketMetadata | null;
+  launchpad: LaunchpadMetadata | null;
+  landpad: LandpadMetadata | null;
+  isLoading: boolean;
+}
+
+export type MetadataState<T> = {
+  data: T;
+  isLoading: boolean;
+};
