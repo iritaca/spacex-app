@@ -51,6 +51,7 @@ const LaunchDetails = ({
   selectedMissionId,
   onClose,
   data,
+  isLoading,
 }: LaunchDetailsProps) => {
   const [metadata, setMetadata] = useState<LaunchDetailsState>({
     rocket: null,
@@ -115,7 +116,7 @@ const LaunchDetails = ({
       <LaunchDetailsButton
         mission={selecetedMissionDetails?.missionName}
         onClose={() => onClose?.()}
-        isLoading={metadata.isLoading}
+        isLoading={metadata.isLoading || isLoading}
       />
 
       <LaunchMetadata
@@ -123,14 +124,14 @@ const LaunchDetails = ({
         launchpad={metadata.launchpad?.region}
         landpad={metadata.landpad?.locality}
         launchDate={selecetedMissionDetails?.launchDate}
-        isLoading={metadata.isLoading}
+        isLoading={metadata.isLoading || isLoading}
       />
 
       <div className="overflow-y-auto overflow-x-hidden flex flex-col gap-6 w-[calc(100%+16px)] pr-4">
         <LaunchDetailsVideo
           video={selecetedMissionDetails?.video}
-          isLoading={metadata.isLoading}
           showEmptyState={!selectedMissionId}
+          isLoading={metadata.isLoading || isLoading}
         />
 
         {metadata.rocket?.description && !metadata.isLoading && (

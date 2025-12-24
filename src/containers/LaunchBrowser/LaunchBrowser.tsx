@@ -1,8 +1,6 @@
 import type { LaunchData, LaunchedListItem } from "../../types";
 import { formatUTCDate } from "../../utils/utils";
 import Accordion from "../../components/Accordion/Accordion";
-import Button from "../../components/Button/Button";
-import LaunchBrowserHeader from "../../components/LaunchBrowser/LaunchBrowserHeader";
 import MissionsList, {
   MissionSearchableList,
 } from "../../components/MissionsList/MissionsList";
@@ -10,7 +8,6 @@ import MissionsList, {
 interface LaunchBrowserProps extends LaunchData {
   selectedMissionId: string | null;
   setSelectedMissionId: React.Dispatch<React.SetStateAction<string | null>>;
-  hasError: boolean;
 }
 
 /**
@@ -31,14 +28,13 @@ interface LaunchBrowserProps extends LaunchData {
  * @param data - Full SpaceX launch dataset
  * @param selectedMissionId - The current selected mission Id
  * @param setSelectedMissionId - selection state updater
- * @param hasError - Indicates whether intial API load failed
  *
  */
 const LaunchBrowser = ({
   data,
   selectedMissionId,
   setSelectedMissionId,
-  hasError,
+  isLoading,
 }: LaunchBrowserProps) => {
   // Displays missions in Ascending order (Oldest to newest)
   const sortedByDateAsc = [...data].sort(
@@ -63,44 +59,35 @@ const LaunchBrowser = ({
     );
 
   return (
-    <>
-      <section className="flex flex-col min-h-0 pt-6 pb-8 px-4 md:overflow-y-scroll md:flex-1 md:max-w-96 md:pl-8">
-        <Accordion label="Active missions" stickyTopOffset={6}>
-          {/* Active missions intentionally empty.
+    <section className="flex flex-col min-h-0 pt-6 pb-8 px-4 md:overflow-y-auto md:flex-1 md:max-w-96 md:pl-8">
+      <Accordion label="Active missions" stickyTopOffset={6}>
+        {/* Active missions intentionally empty.
           SpaceX API does not expose active/latest missions.
           Most recent available launch data is from 2022.*/}
-          <MissionsList
-            onSelect={setSelectedMissionId}
-            selectedId={selectedMissionId}
-            missions={[]}
-          />
-        </Accordion>
-        <Accordion label="Upcoming launches" stickyTopOffset={6}>
-          <MissionsList
-            missions={upcommingMissions}
-            onSelect={setSelectedMissionId}
-            selectedId={selectedMissionId}
-          />
-        </Accordion>
-        <Accordion label="Past Launches" defaultOpen stickyTopOffset={6}>
-          <MissionSearchableList
-            missions={pastMissions}
-            selectedId={selectedMissionId}
-            onSelect={setSelectedMissionId}
-          />
-        </Accordion>
-      </section>
-
-      {/* Visible when initial API load fails */}
-      {/* @Isaac - return here to add functionality */}
-      {hasError && (
-        <Button
-          className="w-[calc(100vw-48px)] ml-4 absolute z-10 bottom-8"
-          label="Load data"
-          onClick={() => {}}
+        <MissionsList
+          onSelect={setSelectedMissionId}
+          selectedId={selectedMissionId}
+          missions={[]}
+          isLoading={isLoading}
         />
-      )}
-    </>
+      </Accordion>
+      <Accordion label="Upcoming launches" stickyTopOffset={6}>
+        <MissionsList
+          missions={upcommingMissions}
+          onSelect={setSelectedMissionId}
+          selectedId={selectedMissionId}
+          isLoading={isLoading}
+        />
+      </Accordion>
+      <Accordion label="Past Launches" defaultOpen stickyTopOffset={6}>
+        <MissionSearchableList
+          missions={pastMissions}
+          selectedId={selectedMissionId}
+          onSelect={setSelectedMissionId}
+          isLoading={isLoading}
+        />
+      </Accordion>
+    </section>
   );
 };
 

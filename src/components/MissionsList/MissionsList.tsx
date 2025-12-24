@@ -79,6 +79,7 @@ interface MissionListProps {
   onSelect: (id: string) => void;
   selectedId: string | null;
   customEmptyState?: React.ReactNode;
+  isLoading: boolean;
 }
 
 /**
@@ -101,7 +102,9 @@ const MissionsList = ({
   onSelect,
   selectedId,
   customEmptyState,
+  isLoading,
 }: MissionListProps) => {
+  if (isLoading) return <></>;
   // Renders empty state
   if (missions.length === 0) {
     if (!customEmptyState)
@@ -158,10 +161,10 @@ export const MissionSearchableList = ({
   missions,
   selectedId,
   onSelect,
+  isLoading,
 }: MissionListProps) => {
   const [query, setQuery] = useState("");
   const [inputValue, setInputValue] = useState("");
-
   if (missions.length === 0)
     return (
       <EmptyState>
@@ -181,6 +184,7 @@ export const MissionSearchableList = ({
         onSearch={setQuery}
         onChange={setInputValue}
         className="mb-3"
+        isDisabled={isLoading}
       />
       {filteredMissions && (
         <MissionsList
@@ -201,6 +205,7 @@ export const MissionSearchableList = ({
               />
             </EmptyState>
           }
+          isLoading={isLoading}
         />
       )}
     </div>

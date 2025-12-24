@@ -33,14 +33,17 @@ function formatDigits(count?: number) {
 const CountContainer = ({
   title,
   count,
+  isLoading,
 }: {
   title: string;
   count?: number;
+  isLoading: boolean;
 }) => {
+  const valueToUse = isLoading ? undefined : count;
   return (
     <div className="flex flex-col gap-2 items-center">
       <div className="flex gap-[2px]">
-        {formatDigits(count).map((c, i) => (
+        {formatDigits(valueToUse).map((c, i) => (
           <Count value={c} key={`countItem-${c}-${i}`} />
         ))}
       </div>
