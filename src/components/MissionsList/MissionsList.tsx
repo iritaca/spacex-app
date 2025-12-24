@@ -58,10 +58,10 @@ const MissionButton = ({
         </div>
       }
       icon={<ChevronIcon />}
-      className={`w-full flex justify-between items-center p-2 bg-card hover:bg-card/60 duration-150 ${
+      className={`w-full flex justify-between items-center p-2  hover:bg-card/60 duration-150 ${
         hasBorder.borderTop ? "rounded-t-sm" : ""
       } ${hasBorder.borderBottom ? "rounded-b-sm" : ""} ${
-        selectedId === id ? "bg-accent/60" : ""
+        selectedId === id ? "bg-accent/60" : "bg-card"
       }`}
     />
   );
