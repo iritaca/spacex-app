@@ -82,6 +82,7 @@ Here are some registered notes of my process:
 - **Dec 19:** After creating wireframes in Figma, I asked ChatGPT to propose color palettes. This accelerated my color exploration process, which usually takes longer than wireframing.
 - **Dec 21:** While building the `Search` component, I ran into a trade-off regarding clearing typed values when the user clicked `Clear`. I used ChatGPT to brainstorm solutions.
 - **Dec 22:** Decided how to fetch mission metadata efficiently using `Promise.all` for multiple API calls. ChatGPT helped me reason through pitfalls, such as avoiding new object creation on each render, which was causing re-render loops.
+- **Dec 23** RetryButton & error recovery system. Used ChatGPT to refine a retry mechanism that renders only when the initial API request fails. The button re-triggers the fetch and enforces a per-session retry limit using `sessionStorage` to prevent excessive API calls.
 
 All AI-generated suggestions were carefully reviewed and adapted to maintain consistency, readability, and project standards.
 
