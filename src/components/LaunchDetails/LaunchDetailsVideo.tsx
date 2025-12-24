@@ -5,6 +5,7 @@ import { Skeleton } from "../Loader/Loader";
 interface LaunchDetailsVideoProps {
   video: string | undefined;
   isLoading: boolean;
+  showEmptyState: boolean;
 }
 const videoSizeClasses = "w-full aspect-[4/3] flex-shrink-0";
 
@@ -21,15 +22,26 @@ const videoSizeClasses = "w-full aspect-[4/3] flex-shrink-0";
  *
  * @param video - Raw video URL
  * @param isLoading - Whether the video is currently loading
+ * @param showEmptyState - shows a special empty state when no selected id
  */
-const LaunchDetailsVideo = ({ video, isLoading }: LaunchDetailsVideoProps) => {
+const LaunchDetailsVideo = ({
+  video,
+  isLoading,
+  showEmptyState,
+}: LaunchDetailsVideoProps) => {
+  if (showEmptyState)
+    return (
+      <EmptyState className={videoSizeClasses} size="lg">
+        <EmptyStateDescription children="Select a mission to  explore  details" />
+      </EmptyState>
+    );
   const embedUrl = toYoutubeEmbeddedUrl(video);
 
   if (isLoading) return <Skeleton className={videoSizeClasses} />;
 
   if (!video || !embedUrl)
     return (
-      <EmptyState className={`${videoSizeClasses}`}>
+      <EmptyState className={videoSizeClasses}>
         <EmptyStateDescription children="No mission video available" />
       </EmptyState>
     );
