@@ -26,7 +26,7 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
 /src
     /components - Reusable UI components: Button, Accordion,EmptyState, etc.
     /containers - Orchestrator components: LaunchBrowser, LaunchDetails, MainBody
-    /hooks - Custom hooks: useIsMobile
+    /hooks - Custom hooks: useBreakpoint
     /constants 
     /utils - Helpers: date formating, API fetching
     /types - Typescript interface
@@ -59,7 +59,7 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
 - LaunchDetails
 
 ### Hooks
-- useIsMobile
+- useBreakpoint
 
 ### Features
 - Loading, error and empty states
@@ -89,10 +89,14 @@ Here are some registered notes of my process:
 All AI-generated suggestions were carefully reviewed and adapted to maintain consistency, readability, and project standards.
 
 ## Challenges & trade-offs
-- API limitations:
+- **API limitations:**
     - `Active missions` endpoint not available; left placeholder for future enhancement
     - Limited historical data (most recent year: 2022)
-- Debounced search: Built a custom debounce utility, didn't rely on external libraries for simplicity
+- **Debounced search:** 
+    - Built a custom debounce utility, didn't rely on external libraries for simplicity
+- **Responsive layouts:** 
+    - Tailwind doesn't support `grid-template-areas`.
+    - Layout variations across breakpoints were handled via a custom `useBreakpoint` hook.
 
 ### Trade-offs
 - Local state was sufficient; no global state management implemented yet
