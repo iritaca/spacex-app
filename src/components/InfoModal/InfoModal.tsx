@@ -4,6 +4,7 @@ import InfoIcon from "../icons/InfoIcon";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseIcon from "../icons/CloseIcon";
 import { MODAL_LABELED_BY } from "../../constants";
+import { useIsMobile } from "../../hooks";
 
 /**
  * Header Info popover component
@@ -144,6 +145,8 @@ const InfoIconAndModal = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
 
+  const isMobile = useIsMobile();
+
   //   Closes the popover when user press `Escape` key
   useEffect(() => {
     if (!showInfoModal) return;
@@ -204,35 +207,29 @@ const InfoIconAndModal = () => {
             {/* Popover */}
             <motion.div
               initial={{
-                x: buttonRect.left,
-                y: buttonRect.top,
-                scale: 0.2,
-                borderRadius: 999,
+                right: isMobile ? 16 : 32,
+                top: 0,
+                borderRadius: 6,
+                opacity: 0,
               }}
               animate={{
-                x: "10vw",
-                y: buttonRect.bottom - 16,
-                scale: 1,
-                borderRadius: 6,
+                top: isMobile ? buttonRect.bottom + 8 : 96,
+                opacity: 1,
               }}
               exit={{
-                x: buttonRect.left,
-                y: buttonRect.top,
-                borderRadius: 999,
-                scale: 0.1,
+                top: 0,
+                opacity: 0,
               }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
               className="fixed
-    -translate-x-1/2
-    -translate-y-1/2
-    bg-card
-    w-[80vw]
-    max-w-[480px]
-    max-h-[80vh]
-    overflow-auto
-    shadow-xl
-    p-6
-    z-30"
+                        bg-card
+                        w-[80vw]
+                        max-w-[480px]
+                        max-h-[80vh]
+                        overflow-auto
+                        shadow-xl
+                        p-6
+                        z-30"
               role="dialog"
               aria-modal="true"
               aria-labelledby={MODAL_LABELED_BY}
