@@ -50,6 +50,8 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
  - Count & CountContainer
  - EmptyState
  - Search
+ - RetryButton
+ - Notification
 
 ### Orchestrator components
 - MissionList & MissionSearchableList
