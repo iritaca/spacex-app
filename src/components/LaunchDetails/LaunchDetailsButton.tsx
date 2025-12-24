@@ -8,12 +8,28 @@ interface LaunchDetailsButtonProps {
   mission?: string;
   isLoading: boolean;
 }
+const GoBackIcon = () => {
+  return (
+    <ChevronIcon
+      direction="left"
+      className="shrink-0 w-[28px] h-[28px] mt-[2px]"
+    />
+  );
+};
+
+const LaunchDetailsSkeleton = () => (
+  <Skeleton className="h-full max-h-8 flex-1" />
+);
+
+const LaunchDetailsTitle = ({ title }: { title?: string }) => (
+  <p className="font-bold text-2xl">{title || "Mission Name"}</p>
+);
 
 /**
  * LaunchDetailsButton
  *
  * Displays the main title of the launch details view
- *
+ * On mobile, acts as a navigational button
  *
  * @param onClose - Callback fired when the button is clicked (Mobile behavior)
  * @param mission - Mission name to display as the title
@@ -26,28 +42,37 @@ const LaunchDetailsButton = ({
   mission,
   isLoading,
 }: LaunchDetailsButtonProps) => {
-  if (isLoading) return <Skeleton className="h-8" />;
-
-  // @Isaac - i need to implement isMobile to return a different component
   const isMobile = useIsMobile();
-  return (
-    <Button
-      variant="custom"
-      onClick={onClose}
-      label={
-        <div className="flex flex-col gap-1 text-left">
-          <h3 className="flex gap-2">
-            <ChevronIcon
-              direction="left"
-              className="shrink-0 w-[28px] h-[28px] mt-[2px]"
-            />
 
-            <p className="font-bold text-2xl">{mission || "Mission Name"}</p>
-          </h3>
+  if (isMobile) {
+    if (isLoading)
+      return (
+        <div className="flex gap-1">
+          {/* Prevents the user from getting stuck when data takes long time to load */}
+          <Button onClick={onClose} variant="custom" icon={<GoBackIcon />} />
+
+          <LaunchDetailsSkeleton />
         </div>
-      }
-    />
-  );
+      );
+
+    return (
+      <Button
+        variant="custom"
+        onClick={onClose}
+        label={
+          <div className="flex flex-col gap-1 text-left">
+            <h3 className="flex gap-2">
+              <GoBackIcon />
+
+              <LaunchDetailsTitle title={mission} />
+            </h3>
+          </div>
+        }
+      />
+    );
+  }
+  if (isLoading) return <LaunchDetailsSkeleton />;
+  return <LaunchDetailsTitle title={mission} />;
 };
 
 export default LaunchDetailsButton;
