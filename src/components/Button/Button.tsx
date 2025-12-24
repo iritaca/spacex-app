@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { DISABLED_STYLES } from "../../constants";
 
 interface ButtonProps {
   label?: string | React.ReactNode;
@@ -6,6 +7,7 @@ interface ButtonProps {
   className?: string;
   variant?: "default" | "custom";
   onClick?: () => void;
+  isDisabled?: boolean;
 }
 
 /**
@@ -20,16 +22,22 @@ interface ButtonProps {
  * @param className - Optional additional styles
  * @param variant - Visual style variant of the button, default displays a rounded box button with `accent` color
  * @param onClick - Click handler
+ * @param isDisabled - Disables the button
  */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ label, icon, className = "", variant = "default", onClick }, ref) => {
+  (
+    { label, icon, className = "", variant = "default", onClick, isDisabled },
+    ref
+  ) => {
     const defaultClassNames =
       variant === "default"
         ? "font-semibold text-base rounded-sm bg-accent hover:bg-accent/60 min-h-11"
         : "";
     return (
       <button
-        className={`transition-colors duration-300  ${className} ${defaultClassNames}`}
+        className={`transition-colors duration-300  ${className} ${defaultClassNames} ${
+          isDisabled ? DISABLED_STYLES : ""
+        }`}
         onClick={onClick}
         ref={ref}
       >
