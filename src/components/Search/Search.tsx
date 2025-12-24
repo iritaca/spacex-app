@@ -1,6 +1,7 @@
 import { useMemo, type ChangeEvent } from "react";
 import { debounce } from "../../utils/utils";
 import SearchIcon from "../icons/SearchIcon";
+import { DISABLED_STYLES } from "../../constants";
 
 interface SearchProps {
   value: string;
@@ -9,6 +10,7 @@ interface SearchProps {
   onChange: (value: string) => void;
   delay?: number;
   className?: string;
+  isDisabled: boolean;
 }
 /**
  * Search
@@ -22,7 +24,9 @@ interface SearchProps {
  * @param onSearch - Callback fired when the user stops typing.
  * @param onChange - Fired immediately on input change
  * @param delay - Debounce delay in milliseconds, {default:300ms}
- * @param placeholder - Displays a title to be shown when the container has no value
+ * @param placeholder - Displays a title to be shown when the container has no
+ * value
+ * @param isDisabled - Disables the input
  * @returns
  */
 const Search = ({
@@ -32,6 +36,7 @@ const Search = ({
   onChange,
   delay = 300,
   className = "",
+  isDisabled,
 }: SearchProps) => {
   /**
    * Memoized debounced callback
@@ -53,7 +58,11 @@ const Search = ({
     debounceSearch(nextValue);
   };
   return (
-    <div className={`relative bg-card rounded-sm ${className}`}>
+    <div
+      className={`relative bg-card rounded-sm ${className} ${
+        isDisabled ? DISABLED_STYLES : ""
+      }`}
+    >
       <SearchIcon className="absolute left-2 top-[14px]" />
       <input
         value={value}
@@ -64,6 +73,7 @@ const Search = ({
         className="w-full h-11 bg-transparent pl-8"
         type="search"
         autoComplete="off"
+        disabled={isDisabled}
       />
     </div>
   );
