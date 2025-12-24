@@ -63,11 +63,9 @@ const LaunchBrowser = ({
     );
 
   return (
-    <section className="flex flex-col gap-6 pt-6 px-4 h-[calc(100vh-80px)]">
-      <LaunchBrowserHeader data={data} />
-
-      <section className="flex flex-col gap-6 overflow-y-auto overflow-x-hidden min-h-0 pr-4 max-h-[calc(100vh-350px)] w-[calc(100%+16px)]">
-        <Accordion label="Active missions">
+    <>
+      <section className="flex flex-col min-h-0 pt-6 pb-8 px-4 md:overflow-y-scroll md:flex-1 md:max-w-96 md:pl-8">
+        <Accordion label="Active missions" stickyTopOffset={6}>
           {/* Active missions intentionally empty.
           SpaceX API does not expose active/latest missions.
           Most recent available launch data is from 2022.*/}
@@ -77,14 +75,14 @@ const LaunchBrowser = ({
             missions={[]}
           />
         </Accordion>
-        <Accordion label="Upcoming launches">
+        <Accordion label="Upcoming launches" stickyTopOffset={6}>
           <MissionsList
             missions={upcommingMissions}
             onSelect={setSelectedMissionId}
             selectedId={selectedMissionId}
           />
         </Accordion>
-        <Accordion label="Past Launches" defaultOpen>
+        <Accordion label="Past Launches" defaultOpen stickyTopOffset={6}>
           <MissionSearchableList
             missions={pastMissions}
             selectedId={selectedMissionId}
@@ -95,9 +93,17 @@ const LaunchBrowser = ({
 
       {/* Visible when initial API load fails */}
       {/* @Isaac - return here to add functionality */}
-      {hasError && <Button label="Load data" onClick={() => {}} />}
-    </section>
+      {hasError && (
+        <Button
+          className="w-[calc(100vw-48px)] ml-4 absolute z-10 bottom-8"
+          label="Load data"
+          onClick={() => {}}
+        />
+      )}
+    </>
   );
 };
 
 export default LaunchBrowser;
+
+// max-h-[calc(100vh-350px)]

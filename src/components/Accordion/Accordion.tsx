@@ -6,6 +6,7 @@ interface AccordionProps {
   label: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
+  stickyTopOffset?: number;
 }
 
 /**
@@ -22,19 +23,21 @@ interface AccordionProps {
  * @param label - the accordion title
  * @param children - a wrapper for the content
  * @param defaultOpen - User can decide if the accordion is open by default
+ * @param stickyTopOffset - a numeric value that multiplies by Tailwind base value (4) to add offset into sticky element
  * @returns
  */
 const Accordion = ({
   label,
   children,
   defaultOpen = false,
+  stickyTopOffset = 0,
 }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const contentId = `accordion-content-${label.replace(/\s+/g, "-")}`;
   return (
-    <div className="w-full flex flex-col gap-3">
+    <div className="w-full flex flex-col">
       <button
-        className="flex justify-between items-center"
+        className={`flex justify-between items-center py-3 sticky   z-[2] bg-background -top-${stickyTopOffset}`}
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls={contentId}
