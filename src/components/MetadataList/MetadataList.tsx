@@ -2,7 +2,7 @@ import { Skeleton } from "../Loader/Loader";
 
 interface MetadataItemProps {
   label: string;
-  value?: string;
+  value?: string | React.ReactNode;
   isLoading?: boolean;
 }
 
@@ -21,9 +21,9 @@ interface MetadataItemProps {
  * @param isLoading - When true, replaces the value with a loader
  * @returns
  */
-const Metadata = ({ label, value, isLoading }: MetadataItemProps) => {
+export const Metadata = ({ label, value, isLoading }: MetadataItemProps) => {
   let contentToRender = (
-    <p className="text-sm text-primary capitalize">{value || "--"}</p>
+    <p className="text-sm text-primary capitalize w-full">{value || "--"}</p>
   );
   if (isLoading) contentToRender = <Skeleton className="h-6 w-full" />;
   return (
@@ -37,40 +37,30 @@ const Metadata = ({ label, value, isLoading }: MetadataItemProps) => {
 };
 
 interface MetadataProps {
-  rocket?: string;
-  launchpad?: string;
-  launchDate?: string;
-  landpad?: string;
   isLoading?: boolean;
+  list: {
+    label: string;
+    value?: string | React.ReactNode;
+  }[];
 }
 
 /**
- * LaunchMetadata
+ * MetadataList
  *
- * Displays key metadata froma mission launch
+ * Displays a list of key metadata inside a box
  *
- * @param rocket - Rocket name
- * @param launchpad - Launching site name
- * @param landpad - Landing site name
- * @param launchDate - Launch date (formatted)
- * @param isLoading - Enables loading state for all fields
+ * @param list - An array of title and value
+ * @param isLoading - Enables loading
  * @returns
  */
-const LaunchMetadata = ({
-  rocket,
-  launchpad,
-  landpad,
-  launchDate,
-  isLoading,
-}: MetadataProps) => {
+const MetadataList = ({ isLoading, list }: MetadataProps) => {
   return (
     <div className="border border-primary/30 rounded-md flex flex-col gap-2 bg-card p-3">
-      <Metadata label="vehicle" value={rocket} isLoading={isLoading} />
-      <Metadata label="launch site" value={launchpad} isLoading={isLoading} />
-      <Metadata label="launch date" value={launchDate} isLoading={isLoading} />
-      <Metadata label="landing site" value={landpad} isLoading={isLoading} />
+      {list.map((data) => (
+        <Metadata {...data} isLoading={isLoading} />
+      ))}
     </div>
   );
 };
 
-export default LaunchMetadata;
+export default MetadataList;
