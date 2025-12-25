@@ -13,7 +13,7 @@ import LaunchDetailsButton from "../../components/LaunchDetails/LaunchDetailsBut
 import LaunchDetailsVideo from "../../components/LaunchDetails/LaunchDetailsVideo";
 import { useEffect, useState } from "react";
 import { useBreakpoint } from "../../hooks";
-import LaunchContext from "../../components/LaunchContext/LaunchContext";
+import LaunchContext from "../LaunchContext/LaunchContext";
 import MetadataList from "../../components/MetadataList/MetadataList";
 
 interface LaunchDetailsProps extends LaunchData {

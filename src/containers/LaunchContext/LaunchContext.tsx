@@ -1,8 +1,8 @@
 import type { LaunchMissionContext } from "../../types";
-import MetadataList from "../MetadataList/MetadataList";
-import Landpad from "./Landpad";
-import Launchpad from "./Launchpad";
-import Rocket from "./Rocket";
+import MetadataList from "../../components/MetadataList/MetadataList";
+import Landpad from "../../components/LaunchContext/Landpad";
+import Launchpad from "../../components/LaunchContext/Launchpad";
+import Rocket from "../../components/LaunchContext/Rocket";
 
 /**
  * LaunchContext
