@@ -23,7 +23,9 @@ interface MetadataItemProps {
  */
 export const Metadata = ({ label, value, isLoading }: MetadataItemProps) => {
   let contentToRender = (
-    <p className="text-sm text-primary capitalize w-full">{value || "--"}</p>
+    <div className="text-sm text-primary capitalize w-full">
+      {value || "--"}
+    </div>
   );
   if (isLoading) contentToRender = <Skeleton className="h-6 w-full" />;
   return (
@@ -57,7 +59,7 @@ const MetadataList = ({ isLoading, list }: MetadataProps) => {
   return (
     <div className="border border-primary/30 rounded-md flex flex-col gap-2 bg-card p-3">
       {list.map((data) => (
-        <Metadata {...data} isLoading={isLoading} />
+        <Metadata {...data} key={data.label} isLoading={isLoading} />
       ))}
     </div>
   );
