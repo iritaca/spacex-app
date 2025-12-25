@@ -8,11 +8,11 @@ interface LaunchDetailsButtonProps {
   mission?: string;
   isLoading: boolean;
 }
-const GoBackIcon = () => {
+const GoBackIcon = ({ className = "" }: { className?: string }) => {
   return (
     <ChevronIcon
       direction="left"
-      className="shrink-0 w-[28px] h-[28px] mt-[2px]"
+      className={`shrink-0 w-[28px] h-[28px] mt-[2px] ${className}`}
     />
   );
 };
@@ -62,7 +62,7 @@ const LaunchDetailsButton = ({
         label={
           <div className="flex flex-col gap-1 text-left">
             <h3 className="flex gap-2">
-              <GoBackIcon />
+              <GoBackIcon className="bg-accent/60 rounded-s text-primary" />
 
               <LaunchDetailsTitle title={mission} />
             </h3>
