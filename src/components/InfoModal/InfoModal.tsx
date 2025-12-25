@@ -96,7 +96,8 @@ const InfoPopoverContent = ({ modalLabeledBy }: InfoPopoverContentProps) => {
         title="Built with"
         content={
           <ul className="list-disc pl-6">
-            <li>React + Typescript</li>
+            <li>React + Vite</li>
+            <li>Typescript</li>
             <li>Tailwind CSS (design tokens and responsive UI)</li>
             <li>Framer Motion (UI transitions)</li>
           </ul>
@@ -123,7 +124,7 @@ const InfoPopoverContent = ({ modalLabeledBy }: InfoPopoverContentProps) => {
       />
 
       <InfoDetails
-        title="For curious minds"
+        title="Source code (for curious minds)"
         content={
           <a
             href="https://github.com/iritaca/spacex-app"
@@ -131,7 +132,7 @@ const InfoPopoverContent = ({ modalLabeledBy }: InfoPopoverContentProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            SpaceX repository
+            View project repository
           </a>
         }
       />
