@@ -1,4 +1,5 @@
 import type { LaunchMissionContext } from "../../types";
+import MetadataList from "../MetadataList/MetadataList";
 import Landpad from "./Landpad";
 import Launchpad from "./Launchpad";
 import Rocket from "./Rocket";
@@ -26,6 +27,20 @@ const LaunchContext = (metadata: LaunchMissionContext) => {
       )}
       {metadata.landpad && (
         <Landpad data={metadata.landpad} isLoading={metadata.isLoading} />
+      )}
+      {/* Empty state */}
+      {!metadata.rocket && !metadata.launchpad && (
+        <div className="xl:mt-14 flex flex-col gap-4 ">
+          {Array(3)
+            .fill(undefined)
+            .map((_, idx) => (
+              <MetadataList
+                key={idx}
+                list={[]}
+                className={`h-32 opacity-[calc(${idx}*0.2]`}
+              />
+            ))}
+        </div>
       )}
     </section>
   );

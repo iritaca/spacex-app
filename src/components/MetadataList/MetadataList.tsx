@@ -40,6 +40,7 @@ export const Metadata = ({ label, value, isLoading }: MetadataItemProps) => {
 
 interface MetadataProps {
   isLoading?: boolean;
+  className?: string;
   list: {
     label: string;
     value?: string | React.ReactNode;
@@ -53,11 +54,14 @@ interface MetadataProps {
  *
  * @param list - An array of title and value
  * @param isLoading - Enables loading
+ * @param className - Optional external styles
  * @returns
  */
-const MetadataList = ({ isLoading, list }: MetadataProps) => {
+const MetadataList = ({ isLoading, list, className = "" }: MetadataProps) => {
   return (
-    <div className="border border-primary/30 rounded-md flex flex-col gap-2 bg-card p-3">
+    <div
+      className={`border border-primary/30 rounded-md flex flex-col gap-2 bg-card p-3 ${className}`}
+    >
       {list.map((data) => (
         <Metadata {...data} key={data.label} isLoading={isLoading} />
       ))}
