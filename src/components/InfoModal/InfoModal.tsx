@@ -3,7 +3,11 @@ import Button from "../Button/Button";
 import InfoIcon from "../icons/InfoIcon";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseIcon from "../icons/CloseIcon";
-import { MODAL_LABELED_BY } from "../../constants";
+import {
+  INFO_MODAL_BUTTON_WIDTH,
+  MAX_INFO_MODAL_WIDTH,
+  MODAL_LABELED_BY,
+} from "../../constants";
 import { useBreakpoint } from "../../hooks";
 
 /**
@@ -207,7 +211,12 @@ const InfoIconAndModal = () => {
             {/* Popover */}
             <motion.div
               initial={{
-                right: isMobile ? 16 : 32,
+                right: isMobile ? 16 : undefined,
+                left: !isMobile
+                  ? buttonRect.left -
+                    MAX_INFO_MODAL_WIDTH +
+                    INFO_MODAL_BUTTON_WIDTH
+                  : undefined,
                 top: 0,
                 borderRadius: 6,
                 opacity: 0,
@@ -221,15 +230,15 @@ const InfoIconAndModal = () => {
                 opacity: 0,
               }}
               transition={{ type: "spring", stiffness: 260, damping: 24 }}
-              className="fixed
+              className={`fixed
                         bg-card
                         w-[80vw]
-                        max-w-[480px]
+                        max-w-[${MAX_INFO_MODAL_WIDTH}px]
                         max-h-[80vh]
                         overflow-auto
                         shadow-xl
                         p-6
-                        z-30"
+                        z-30`}
               role="dialog"
               aria-modal="true"
               aria-labelledby={MODAL_LABELED_BY}

@@ -12,3 +12,6 @@ export const API_ERROR_MESSAGE = "Failed to fetch launches";
 
 export const DISABLED_STYLES =
   "opacity-30 cursor-not-allowed pointer-events-none select-none";
+
+export const MAX_INFO_MODAL_WIDTH = 480;
+export const INFO_MODAL_BUTTON_WIDTH = 32;
