@@ -116,33 +116,40 @@ const LaunchDetails = ({
     loadDetails();
   }, [selectedMissionId, data]);
 
+  const isSingleColumn = useBreakpoint("desktop");
+
   return (
-    <section className="p-4 flex flex-col gap-6 h-full md:flex-1 md:pl-8 md:py-5">
-      <LaunchDetailsButton
-        mission={selecetedMissionDetails?.missionName}
-        onClose={() => onClose?.()}
-        isLoading={metadata.isLoading || isLoading}
-      />
-
-      <MetadataList
-        list={[
-          { label: "vehicle", value: metadata.rocket?.name },
-          { label: "launch site", value: metadata.launchpad?.region },
-          { label: "launch date", value: metadata.landpad?.locality },
-          { label: "landing site", value: selecetedMissionDetails?.launchDate },
-        ]}
-        isLoading={metadata.isLoading || isLoading}
-      />
-
-      <div className="overflow-y-auto overflow-x-hidden flex flex-col gap-6 w-[calc(100%+16px)] pr-4">
-        <LaunchDetailsVideo
-          video={selecetedMissionDetails?.video}
-          showEmptyState={!selectedMissionId}
+    <section className="p-4 flex flex-col gap-6 h-full md:flex-1 md:pl-8 md:py-5 lg:flex-row lg:gap-8 xl:pr-0">
+      <div className="flex flex-col gap-6 h-full lg:flex-1 ">
+        <LaunchDetailsButton
+          mission={selecetedMissionDetails?.missionName}
+          onClose={() => onClose?.()}
           isLoading={metadata.isLoading || isLoading}
         />
 
-        {metadata && LaunchContext(metadata)}
+        <MetadataList
+          list={[
+            { label: "vehicle", value: metadata.rocket?.name },
+            { label: "launch site", value: metadata.launchpad?.region },
+            { label: "launch date", value: metadata.landpad?.locality },
+            {
+              label: "landing site",
+              value: selecetedMissionDetails?.launchDate,
+            },
+          ]}
+          isLoading={metadata.isLoading || isLoading}
+        />
+
+        <div className="overflow-y-auto overflow-x-hidden flex flex-col gap-6 w-[calc(100%+16px)] pr-4">
+          <LaunchDetailsVideo
+            video={selecetedMissionDetails?.video}
+            showEmptyState={!selectedMissionId}
+            isLoading={metadata.isLoading || isLoading}
+          />
+          {isSingleColumn && metadata && LaunchContext(metadata)}
+        </div>
       </div>
+      {!isSingleColumn && metadata && LaunchContext(metadata)}
     </section>
   );
 };

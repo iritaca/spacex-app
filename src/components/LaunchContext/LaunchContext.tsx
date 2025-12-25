@@ -17,7 +17,7 @@ import Rocket from "./Rocket";
  */
 const LaunchContext = (metadata: LaunchMissionContext) => {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 flex-1 xl:h-full xl:overflow-y-auto xl:pr-4">
       {metadata.rocket && (
         <Rocket data={metadata.rocket} isLoading={metadata.isLoading} />
       )}
