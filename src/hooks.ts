@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import { MOBILE_LAYOUT_WIDTH, TABLET_LAYOUT_WIDTH } from "./constants";
+import {
+  DESKTOP_LAYOUT_WIDTH,
+  MOBILE_LAYOUT_WIDTH,
+  TABLET_LAYOUT_WIDTH,
+} from "./constants";
 
-type BreakpointSize = "mobile" | "tablet";
+type BreakpointSize = "mobile" | "tablet" | "desktop";
 
 const breakpoints = {
   mobile: MOBILE_LAYOUT_WIDTH,
   tablet: TABLET_LAYOUT_WIDTH,
+  desktop: DESKTOP_LAYOUT_WIDTH,
 };
 /**
  * useBreakpoint
