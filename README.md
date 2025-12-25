@@ -85,6 +85,8 @@ Here are some registered notes of my process:
 - **Dec 21:** While building the `Search` component, I ran into a trade-off regarding clearing typed values when the user clicked `Clear`. I used ChatGPT to brainstorm solutions.
 - **Dec 22:** Decided how to fetch mission metadata efficiently using `Promise.all` for multiple API calls. ChatGPT helped me reason through pitfalls, such as avoiding new object creation on each render, which was causing re-render loops.
 - **Dec 23** RetryButton & error recovery system. Used ChatGPT to refine a retry mechanism that renders only when the initial API request fails. The button re-triggers the fetch and enforces a per-session retry limit using `sessionStorage` to prevent excessive API calls.
+- **Dec 24** AnimatedCount Component. While finishing the UI and functionality. I wanted to add a final touch to the numeric counters.
+I described the grouped-digit structure and the desired behavior (counting from 0 to the final value) to giet guidance on the most appropriate animation approach.
 
 All AI-generated suggestions were carefully reviewed and adapted to maintain consistency, readability, and project standards.
 
