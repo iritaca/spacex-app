@@ -16,7 +16,8 @@ A responsive dashboard to explore SpeceX rocket launches. Built with React + Typ
 SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket launches using the free public SpaceX API.
 
 ## Deployment
-This project is deployed using Vercel 
+The project is deployed on a cloud-based platform (Vercel).
+
 **Live URL:**
 
 ## Architecture & Tech stack
@@ -104,7 +105,7 @@ I described the grouped-digit structure and the desired behavior (counting from 
 ### Trade-offs
 - Local state was sufficient; no global state management implemented yet
 
-## Future enhancements / Scalability
+## Future enhancements & Scalability
 - [ ] Introduce global state management for larger datasets
 - [ ] Implement timeline component to visualize launches chronologically
 - [ ] Add a theme toggle (dark/light)
