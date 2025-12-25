@@ -1,25 +1,23 @@
 # SpaceX Mission control
-A responsive dashboard to explore SpeceX rocke tlaunches. Built with React + Typescript + Tailwind, this project emphasizes modular components, smooth interactions and clear data visualization.
+A responsive dashboard to explore SpeceX rocket launches. Built with React + Typescript + Tailwind, this project emphasizes modular components, smooth interactions and clear data visualization.
 
 ## Table of contents
 1. Project overview
-2. Live demo
+2. Deployment + live demo
 3. Architecture & Tech stack
 4. Components & Features
 5. Design decisions
 6. AI Assistance
 7. Challenges & Trade-offs
 8. Future enhancements / scalability
-9. Deployment
-10. Figma Designs
+9. Figma Designs
 
 ## Project Overview
 SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket launches using the free public SpaceX API.
 
-- Explore past, upcoming and active missions
-- Detailed mission information: video, rocket, launchpad, landing site
-- Searchable and sortables `Past` missions
-- Fully responsive, with mobile and desktop layouts
+## Deployment
+This project is deployed using Vercel 
+**Live URL:**
 
 ## Architecture & Tech stack
 ### Folder structure
@@ -33,13 +31,13 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
 
 ### Tools
 
-- React 18 with **strict TypeScript mode**
-- Vite as a fast bundler and dev server
-- Tailwind CSS fully configured with PostCSS and Autoprefixer
-- Framer Motion for smooth transitions
+- **React 18** with **strict TypeScript mode**
+- **Vite** as a fast bundler and dev server
+- **Tailwind CSS** fully configured with PostCSS and Autoprefixer
+- **Framer Motion** for smooth transitions
 
 ### State & Data management
-- Load component state(`useState`,`useEffect`) basic for this project
+- Load component state (`useState`,`useEffect`) basic for this project
 - Future **scalability**: could use Zustand or Redux for global state
 
 ## Component & Features
@@ -57,15 +55,18 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
 - MissionList & MissionSearchableList
 - LaunchBrowser
 - LaunchDetails
+- launchContex
 
 ### Hooks
 - useBreakpoint
 
 ### Features
+- Explore past, upcoming and active missions
 - Loading, error and empty states
 - Responsive design for mobile and desktop
 - Searchable past launches with live filtering
 - Modular, reusable components
+- Detailed mission information: video, rocket, launchpad, landing site
 
 ## Design decision
 - Layout: Sidebar + main panel inspired by modern dashboards
@@ -77,7 +78,7 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
     - Clear empty state messages with actionable UI (e.g. `clear Search`)
 
 ## AI Assistence
-During the creation of this project, I used **ChatGPT** as a collaborative teammate, to boost efficiency and brainstorming, both for coding and design exploration.
+During the creation of this project, I used **ChatGPT** as a collaborative team-mate, to boost efficiency and brainstorming, both for coding and design exploration.
 
 Here are some registered notes of my process:
 - **Dec 17-18:** Discussed initial concepts for the data to display and explore different UX ideas for the layout. ChatGPT helped validate whether my layout decisions made sense from the user perspective.
@@ -88,7 +89,7 @@ Here are some registered notes of my process:
 - **Dec 24** AnimatedCount Component. While finishing the UI and functionality. I wanted to add a final touch to the numeric counters.
 I described the grouped-digit structure and the desired behavior (counting from 0 to the final value) to get guidance on the most appropriate animation approach.
 
-All AI-generated suggestions were carefully reviewed and adapted to maintain consistency, readability, and project standards.
+> All AI-generated suggestions were carefully reviewed and adapted to maintain consistency, readability, and project standards.
 
 ## Challenges & trade-offs
 - **API limitations:**
@@ -104,15 +105,13 @@ All AI-generated suggestions were carefully reviewed and adapted to maintain con
 - Local state was sufficient; no global state management implemented yet
 
 ## Future enhancements / Scalability
-- Introduce global state management for larger datasets
-- Implement timeline component to visualize launches chronologically
-- Add a theme toggle (dark/light)
-- Add unit testing using Jest
-- Implement scrollTop() for long contet
-- Add Pagination to long mission lists
+- [ ] Introduce global state management for larger datasets
+- [ ] Implement timeline component to visualize launches chronologically
+- [ ] Add a theme toggle (dark/light)
+- [ ] Add unit testing using Jest
+- [ ] Implement scrollTop() for long contet
+- [ ] Add Pagination to long mission lists
 
-## Deployment
-(Planned after final desktop + mobile completition)
 
 ## Figma Design
 
