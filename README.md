@@ -125,3 +125,6 @@ All AI-generated suggestions were carefully reviewed and adapted to maintain con
 
 **Desktop:**  
 ![Desktop](./assets/desktop-color-test.png)
+
+**App look:**  
+![responsive-layout](./assets/responsive-layout.png)
