@@ -9,6 +9,7 @@ import {
   MODAL_LABELED_BY,
 } from "../../constants";
 import { useBreakpoint } from "../../hooks";
+import type { PopoverPosition } from "../../types";
 
 /**
  * Header Info popover component
@@ -147,6 +148,10 @@ const InfoPopoverContent = ({ modalLabeledBy }: InfoPopoverContentProps) => {
 const InfoIconAndModal = () => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
+  const [popoverStyles, setPopoverStyle] = useState<PopoverPosition | null>(
+    null
+  );
+
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
 
@@ -170,9 +175,16 @@ const InfoIconAndModal = () => {
   const openModal = () => {
     lastFocusedRef.current = document.activeElement as HTMLElement;
 
-    if (buttonRef.current) {
-      setButtonRect(buttonRef.current.getBoundingClientRect());
-    }
+    const rect = buttonRef.current?.getBoundingClientRect();
+
+    if (!rect) return;
+
+    const position: PopoverPosition = isMobile
+      ? { right: 16 }
+      : { left: rect.left - MAX_INFO_MODAL_WIDTH + INFO_MODAL_BUTTON_WIDTH };
+
+    setButtonRect(rect);
+    setPopoverStyle(position);
     setShowInfoModal(true);
   };
 
@@ -212,15 +224,10 @@ const InfoIconAndModal = () => {
             {/* Popover */}
             <motion.div
               initial={{
-                right: isMobile ? 16 : undefined,
-                left: !isMobile
-                  ? buttonRect.left -
-                    MAX_INFO_MODAL_WIDTH +
-                    INFO_MODAL_BUTTON_WIDTH
-                  : undefined,
                 top: 0,
                 borderRadius: 6,
                 opacity: 0,
+                ...popoverStyles,
               }}
               animate={{
                 top: isMobile ? buttonRect.bottom + 8 : 96,
@@ -234,7 +241,7 @@ const InfoIconAndModal = () => {
               className={`fixed
                         bg-card
                         w-[80vw]
-                        max-w-[${MAX_INFO_MODAL_WIDTH}px]
+                        max-w-[480px]
                         max-h-[80vh]
                         overflow-auto
                         shadow-xl

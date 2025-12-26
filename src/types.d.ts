@@ -122,3 +122,8 @@ export type MetadataState<T> = {
   data: T;
   isLoading: boolean;
 };
+
+export type PopoverPosition = {
+  left?: number;
+  right?: number;
+};
