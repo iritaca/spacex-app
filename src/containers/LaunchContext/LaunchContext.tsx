@@ -18,7 +18,9 @@ import Rocket from "../../components/LaunchContext/Rocket";
  */
 const LaunchContext = (metadata: LaunchMissionContext) => {
   return (
-    <section className="flex flex-col gap-4 flex-1 xl:h-full xl:overflow-y-auto xl:pr-4">
+    <section
+      className={`flex flex-col gap-4 flex-1 xl:h-full xl:overflow-y-auto xl:pr-4 xl:pt-2`}
+    >
       {metadata.rocket && (
         <Rocket data={metadata.rocket} isLoading={metadata.isLoading} />
       )}
@@ -30,15 +32,11 @@ const LaunchContext = (metadata: LaunchMissionContext) => {
       )}
       {/* Empty state */}
       {!metadata.rocket && !metadata.launchpad && (
-        <div className="xl:mt-14 flex flex-col gap-4 ">
+        <div className="xl:mt-12 flex flex-col gap-4 ">
           {Array(3)
             .fill(undefined)
             .map((_, idx) => (
-              <MetadataList
-                key={idx}
-                list={[]}
-                className={`h-32 opacity-[calc(${idx}*0.2]`}
-              />
+              <MetadataList key={idx} list={[]} className="h-32" />
             ))}
         </div>
       )}
