@@ -18,7 +18,7 @@ SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket 
 ## Deployment
 The project is deployed on a cloud-based platform (Vercel).
 
-**Live URL:**
+**Live URL:** https://spacex-app-delta.vercel.app/
 
 ## Architecture & Tech stack
 ### Folder structure
