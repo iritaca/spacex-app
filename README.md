@@ -10,7 +10,7 @@ A responsive dashboard to explore SpeceX rocket launches. Built with React + Typ
 6. AI Assistance
 7. Challenges & Trade-offs
 8. Future enhancements / scalability
-9. Figma Designs
+9. Figma reference
 
 ## Project Overview
 SpaceX Mission Control is a dashboard to visualize the history of SpaceX rocket launches using the free public SpaceX API.
@@ -23,12 +23,12 @@ The project is deployed on a cloud-based platform (Vercel).
 ## Architecture & Tech stack
 ### Folder structure
 /src
-    /components - Reusable UI components: Button, Accordion,EmptyState, etc.
-    /containers - Orchestrator components: LaunchBrowser, LaunchDetails, MainBody
-    /hooks - Custom hooks: useBreakpoint
-    /constants 
-    /utils - Helpers: date formating, API fetching
-    /types - Typescript interface
+- components - Reusable UI components: Button, Accordion,EmptyState, etc.
+- containers - Orchestrator components: LaunchBrowser, LaunchDetails, MainBody
+- hooks - Custom hooks: useBreakpoint
+- constants 
+- utils - Helpers: date formating, API fetching
+- types - Typescript interface
 
 ### Tools
 
@@ -51,9 +51,9 @@ The project is deployed on a cloud-based platform (Vercel).
  - Search
  - RetryButton
  - Notification
+ - MissionList & MissionSearchableList
 
 ### Orchestrator components
-- MissionList & MissionSearchableList
 - LaunchBrowser
 - LaunchDetails
 - launchContex
@@ -75,7 +75,7 @@ The project is deployed on a cloud-based platform (Vercel).
     - On mobile, it slides-in
     - On desktop it's always visible
 - UX considerations
-    - Sorted missions for better browsing: upcaoming ascending, past descending
+    - Sorted missions for better browsing: upcoming ascending, past descending
     - Clear empty state messages with actionable UI (e.g. `clear Search`)
 
 ## AI Assistence
@@ -109,12 +109,12 @@ I described the grouped-digit structure and the desired behavior (counting from 
 - [ ] Introduce global state management for larger datasets
 - [ ] Implement timeline component to visualize launches chronologically
 - [ ] Add a theme toggle (dark/light)
-- [ ] Add unit testing using Jest
+- [ ] Add unit testing using vitest
 - [ ] Implement scrollTop() for long contet
 - [ ] Add Pagination to long mission lists
 
 
-## Figma Design
+## Figma reference
 
 **Wireframes**  
 ![Wireframe](./assets/mobile-desktop-wireframe.png)
